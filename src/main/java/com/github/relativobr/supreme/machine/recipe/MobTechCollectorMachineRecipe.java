@@ -26,34 +26,37 @@ public class MobTechCollectorMachineRecipe extends MachineRecipe implements Pred
   @ParametersAreNonnullByDefault
   public MobTechCollectorMachineRecipe(SlimefunItemStack input, SlimefunItemStack result,
       Predicate<LivingEntity> predicate) {
-    super(15, new SlimefunItemStack[]{input}, new SlimefunItemStack[]{result});
+    super(15, 
+    		List.of(input).stream().map(item -> item.asOne()).toArray(ItemStack[]::new),
+    		List.of(result).stream().map(item -> item.asOne()).toArray(ItemStack[]::new)
+    );
     Validate.notNull(predicate, "The Predicate must not be null");
     this.predicate = predicate;
   }
 
   public static List<ItemStack> getAllRecipe() {
-    List<ItemStack> displayRecipes = new ArrayList();
+    List<ItemStack> displayRecipes = new ArrayList<ItemStack>();
     SupremeOptions supremeOptions = Supreme.getSupremeOptions();
     if (supremeOptions.isMobTechEnableBee()) {
       displayRecipes.add(
-          new CustomItemStack(SupremeComponents.EMPTY_MOBTECH.getType(),
+          CustomItemStack.create(SupremeComponents.EMPTY_MOBTECH.getType(),
               SupremeComponents.EMPTY_MOBTECH.getDisplayName(),
               "", "&fRequires &bBee &fnearby", ""));
-      displayRecipes.add(ItemUtil.buildItemFromMobTechDTO(BeeTech.SIMPLE_BEE, 0));
+      displayRecipes.add(ItemUtil.buildItemFromMobTechDTO(BeeTech.SIMPLE_BEE, 0).asOne());
     }
     if (supremeOptions.isMobTechEnableIronGolem()) {
       displayRecipes.add(
-          new CustomItemStack(SupremeComponents.EMPTY_MOBTECH.getType(),
+          CustomItemStack.create(SupremeComponents.EMPTY_MOBTECH.getType(),
               SupremeComponents.EMPTY_MOBTECH.getDisplayName(),
               "", "&fRequires &bIronGolen &fnearby", ""));
-      displayRecipes.add(ItemUtil.buildItemFromMobTechDTO(IronGolemTech.SIMPLE_GOLEM, 0));
+      displayRecipes.add(ItemUtil.buildItemFromMobTechDTO(IronGolemTech.SIMPLE_GOLEM, 0).asOne());
     }
     if (supremeOptions.isMobTechEnableZombie()) {
       displayRecipes.add(
-          new CustomItemStack(SupremeComponents.EMPTY_MOBTECH.getType(),
+          CustomItemStack.create(SupremeComponents.EMPTY_MOBTECH.getType(),
               SupremeComponents.EMPTY_MOBTECH.getDisplayName(),
               "", "&fRequires &bZombie &fnearby", ""));
-      displayRecipes.add(ItemUtil.buildItemFromMobTechDTO(ZombieTech.SIMPLE_ZOMBIE, 0));
+      displayRecipes.add(ItemUtil.buildItemFromMobTechDTO(ZombieTech.SIMPLE_ZOMBIE, 0).asOne());
     }
     return displayRecipes;
   }

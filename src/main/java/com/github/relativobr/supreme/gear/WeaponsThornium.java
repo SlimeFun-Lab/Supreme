@@ -14,9 +14,9 @@ import org.bukkit.inventory.ItemStack;
 public class WeaponsThornium {
 
   public static final SlimefunItemStack THORNIUM_BOW = new SupremeItemStack("SUPREME_BOW_THORNIUM", Material.BOW);
-  public static final ItemStack[] RECIPE_THORNIUM_BOW = {null, SupremeComponents.THORNIUM_INGOT,
-      SupremeCoreDeath.RESOURCE_CORE_STRING, SupremeCetrus.CETRUS_LUMIUM, null, SupremeCoreDeath.RESOURCE_CORE_STRING,
-      null, SupremeComponents.THORNIUM_INGOT, SupremeCoreDeath.RESOURCE_CORE_STRING};
+  public static final ItemStack[] RECIPE_THORNIUM_BOW = {null, SupremeComponents.THORNIUM_INGOT.asOne(),
+      SupremeCoreDeath.RESOURCE_CORE_STRING.asOne(), SupremeCetrus.CETRUS_LUMIUM.asOne(), null, SupremeCoreDeath.RESOURCE_CORE_STRING.asOne(),
+      null, SupremeComponents.THORNIUM_INGOT.asOne(), SupremeCoreDeath.RESOURCE_CORE_STRING.asOne()};
 
   public static final SlimefunItemStack THORNIUM_BOW_MAGIC = new SupremeItemStack("SUPREME_BOW_MAGIC", Material.BOW);
 
@@ -32,10 +32,10 @@ public class WeaponsThornium {
 
   public static final SlimefunItemStack THORNIUM_SHIELD = new SupremeItemStack("SUPREME_SHIELD_THORNIUM",
       Material.SHIELD);
-  public static final ItemStack[] RECIPE_THORNIUM_SHIELD = {SupremeCoreNature.RESOURCE_CORE_OAK_LOG,
-      SupremeComponents.THORNIUM_INGOT, SupremeCoreNature.RESOURCE_CORE_OAK_LOG,
-      SupremeCoreNature.RESOURCE_CORE_OAK_LOG, SupremeCetrus.CETRUS_LUX, SupremeCoreNature.RESOURCE_CORE_OAK_LOG, null,
-      SupremeCoreNature.RESOURCE_CORE_OAK_LOG, null};
+  public static final ItemStack[] RECIPE_THORNIUM_SHIELD = {SupremeCoreNature.RESOURCE_CORE_OAK_LOG.asOne(),
+      SupremeComponents.THORNIUM_INGOT.asOne(), SupremeCoreNature.RESOURCE_CORE_OAK_LOG.asOne(),
+      SupremeCoreNature.RESOURCE_CORE_OAK_LOG.asOne(), SupremeCetrus.CETRUS_LUX.asOne(), SupremeCoreNature.RESOURCE_CORE_OAK_LOG.asOne(), null,
+      SupremeCoreNature.RESOURCE_CORE_OAK_LOG.asOne(), null};
 
   public static final SlimefunItemStack THORNIUM_SHIELD_MAGIC = new SupremeItemStack("SUPREME_SHIELD_MAGIC",
       Material.SHIELD);
@@ -54,8 +54,8 @@ public class WeaponsThornium {
 
   public static final SlimefunItemStack THORNIUM_SWORD = new SupremeItemStack("SUPREME_SWORD_THORNIUM",
       Material.NETHERITE_SWORD);
-  public static final ItemStack[] RECIPE_THORNIUM_SWORD = {null, SupremeComponents.THORNIUM_INGOT, null, null,
-      SupremeComponents.THORNIUM_INGOT, null, null, SupremeCetrus.CETRUS_LUMIUM, null};
+  public static final ItemStack[] RECIPE_THORNIUM_SWORD = {null, SupremeComponents.THORNIUM_INGOT.asOne(), null, null,
+      SupremeComponents.THORNIUM_INGOT.asOne(), null, null, SupremeCetrus.CETRUS_LUMIUM.asOne(), null};
 
   public static final SlimefunItemStack THORNIUM_SWORD_MAGIC = new SupremeItemStack("SUPREME_SWORD_MAGIC",
       Material.NETHERITE_SWORD);
