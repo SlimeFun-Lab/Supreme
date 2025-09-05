@@ -3,27 +3,18 @@ Supreme is an addon for Slimefun which adds 100+ various new resources that will
 
 ## Requirements
 
-Minecraft Version: +1.17
+Minecraft Version: 1.21.8
 
+## Download
+Releases tab
 
+## Fork
+This is a fork of the original Supreme addon. (original: [Supreme](https://github.com/Slimefun-Addon-Community/Supreme))
+As such, I am only maintaining and not updating this addon.
 
-### [Download](https://blob.build/project/Supreme)
-[![Build Status](https://thebusybiscuit.github.io/builds/RelativoBR/Supreme/main/badge.svg)](https://blob.build/project/Supreme)
-
-
-## Bugs/Suggestions
-
-Make a new issue, pull request, or discord Slimefun-Addon-Community
-
-<p>
-  <a href="https://discord.gg/slimefun">
-    <img src="https://discordapp.com/api/guilds/565557184348422174/widget.png?style=banner3" alt="Discord Invite"/>
-  </a>
-  <a href="https://discord.gg/SqD3gg5SAU">
-    <img src="https://discordapp.com/api/guilds/809178621424041997/widget.png?style=banner3" alt="Discord Invite"/>
-  </a>
-</p>
-
+## Issues
+If you encounter any issues, open an issue. There's no guarantee I'll do it,
+but at least I'll know about it.
 
 ## Machines
 - **Core Fabricator** - MultiBlock Machine - You can craft core here
