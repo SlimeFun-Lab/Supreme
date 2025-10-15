@@ -48,7 +48,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.Objects;
 import java.util.stream.Collectors;
 
 @Async
@@ -62,12 +61,12 @@ public class TechGenerator extends SimpleItemContainerMachine implements Radioac
       LoreBuilder.machine(MachineTier.END_GAME, MachineType.MACHINE),
       UtilEnergy.energyPowerPerTick(2000), "", "&3Supreme Machine");
 
-  public static final ItemStack[] RECIPE_TECH_GENERATOR = {SupremeComponents.INDUCTIVE_MACHINE,
-      SupremeComponents.SYNTHETIC_RUBY, SupremeComponents.INDUCTIVE_MACHINE,
-      SlimefunItems.REINFORCED_ALLOY_INGOT,
-      new ItemStack(Material.LOOM), SlimefunItems.REINFORCED_ALLOY_INGOT,
-      SupremeComponents.CARRIAGE_MACHINE,
-      SlimefunItems.HEATING_COIL, SupremeComponents.CARRIAGE_MACHINE};
+  public static final ItemStack[] RECIPE_TECH_GENERATOR = {SupremeComponents.INDUCTIVE_MACHINE.asOne(),
+      SupremeComponents.SYNTHETIC_RUBY.asOne(), SupremeComponents.INDUCTIVE_MACHINE.asOne(),
+      SlimefunItems.REINFORCED_ALLOY_INGOT.asOne(),
+      new ItemStack(Material.LOOM), SlimefunItems.REINFORCED_ALLOY_INGOT.asOne(),
+      SupremeComponents.CARRIAGE_MACHINE.asOne(),
+      SlimefunItems.HEATING_COIL.asOne(), SupremeComponents.CARRIAGE_MACHINE.asOne()};
 
   public static final List<AbstractItemRecipe> receitasParaProduzir = new ArrayList<>();
   private Map<Block, ItemStack> processing = new HashMap<>();
@@ -106,29 +105,29 @@ public class TechGenerator extends SimpleItemContainerMachine implements Radioac
             getCardTier(tierCard), new ItemStack(input2), new ItemStack(input1),
             new ItemStack(input2),
             new ItemStack(input1)}).register(plugin);
-    TechGenerator.addRecipesToProcess(item, output);
+    TechGenerator.addRecipesToProcess(item.asOne(), output);
   }
 
   @Nonnull
   private static ItemStack getCardTier(int tierCard) {
     if (tierCard >= 3) {
-      return SupremeComponents.CENTER_CARD_ULTIMATE;
+      return SupremeComponents.CENTER_CARD_ULTIMATE.asOne();
     } else if (tierCard == 2) {
-      return SupremeComponents.CENTER_CARD_ADVANCED;
+      return SupremeComponents.CENTER_CARD_ADVANCED.asOne();
     } else {
-      return SupremeComponents.CENTER_CARD_SIMPLE;
+      return SupremeComponents.CENTER_CARD_SIMPLE.asOne();
     }
   }
 
   private static void invalidStatus(BlockMenu menu, String txt) {
     for (int i : InventoryRecipe.TECH_GENERATOR_PROGRESS_BAR_SLOT) {
-      menu.replaceExistingItem(i, new CustomItemStack(Material.RED_STAINED_GLASS_PANE, txt));
+      menu.replaceExistingItem(i, CustomItemStack.create(Material.RED_STAINED_GLASS_PANE, txt));
     }
   }
 
   private static void invalidStatus(BlockMenu menu, Material material, String txt) {
     for (int i : InventoryRecipe.TECH_GENERATOR_PROGRESS_BAR_SLOT) {
-      menu.replaceExistingItem(i, new CustomItemStack(material, txt));
+      menu.replaceExistingItem(i, CustomItemStack.create(material, txt));
     }
   }
 
@@ -160,22 +159,22 @@ public class TechGenerator extends SimpleItemContainerMachine implements Radioac
   protected void constructMenu(BlockMenuPreset preset) {
 
     for (int i : InventoryRecipe.TECH_GENERATOR_BORDER) {
-      preset.addItem(i, new CustomItemStack(Material.GRAY_STAINED_GLASS_PANE, " ", new String[0]),
+      preset.addItem(i, CustomItemStack.create(Material.GRAY_STAINED_GLASS_PANE, " ", new String[0]),
           ChestMenuUtils.getEmptyClickHandler());
     }
 
     for (int i : InventoryRecipe.TECH_GENERATOR_BORDER_IN) {
-      preset.addItem(i, new CustomItemStack(Material.BLUE_STAINED_GLASS_PANE, " ", new String[0]),
+      preset.addItem(i, CustomItemStack.create(Material.BLUE_STAINED_GLASS_PANE, " ", new String[0]),
           ChestMenuUtils.getEmptyClickHandler());
     }
 
     for (int i : InventoryRecipe.TECH_GENERATOR_BORDER_OUT) {
-      preset.addItem(i, new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, " ", new String[0]),
+      preset.addItem(i, CustomItemStack.create(Material.ORANGE_STAINED_GLASS_PANE, " ", new String[0]),
           ChestMenuUtils.getEmptyClickHandler());
     }
 
     for (int i : InventoryRecipe.TECH_GENERATOR_PROGRESS_BAR_SLOT) {
-      preset.addItem(i, new CustomItemStack(Material.BLACK_STAINED_GLASS_PANE, " ", new String[0]),
+      preset.addItem(i, CustomItemStack.create(Material.BLACK_STAINED_GLASS_PANE, " ", new String[0]),
           ChestMenuUtils.getEmptyClickHandler());
     }
 
@@ -431,7 +430,7 @@ public class TechGenerator extends SimpleItemContainerMachine implements Radioac
   @Nonnull
   @Override
   public List<ItemStack> getDisplayRecipes() {
-    List<ItemStack> displayRecipes = new ArrayList();
+    List<ItemStack> displayRecipes = new ArrayList<ItemStack>();
     for (AbstractItemRecipe recipe : this.getRecipeShow()) {
       if (recipe != null) {
         ItemStack itemStack = recipe.getFirstItemOutput().clone();

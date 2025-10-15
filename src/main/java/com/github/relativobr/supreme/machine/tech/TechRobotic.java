@@ -51,30 +51,30 @@ public class TechRobotic extends SimpleItemContainerMachine implements Radioacti
       "&fto progress to higher levels", "&fneed 64x to upgrade", "", LoreBuilder.radioactive(Radioactivity.VERY_HIGH), "",
       LoreBuilder.machine(MachineTier.END_GAME, MachineType.MACHINE), UtilEnergy.energyPowerPerSecond(500), "",
       "&3Supreme Machine");
-  public static final ItemStack[] RECIPE_TECH_ROBOTIC = {SupremeComponents.INDUCTIVE_MACHINE,
-      SupremeComponents.SYNTHETIC_RUBY, SupremeComponents.INDUCTIVE_MACHINE, SlimefunItems.REINFORCED_PLATE,
-      SlimefunItems.ELECTRIC_MOTOR, SlimefunItems.REINFORCED_PLATE, SupremeComponents.RUSTLESS_MACHINE,
-      SupremeCore.CORE_OF_BLOCK, SupremeComponents.RUSTLESS_MACHINE};
+  public static final ItemStack[] RECIPE_TECH_ROBOTIC = {SupremeComponents.INDUCTIVE_MACHINE.asOne(),
+      SupremeComponents.SYNTHETIC_RUBY.asOne(), SupremeComponents.INDUCTIVE_MACHINE.asOne(), SlimefunItems.REINFORCED_PLATE.asOne(),
+      SlimefunItems.ELECTRIC_MOTOR.asOne(), SlimefunItems.REINFORCED_PLATE.asOne(), SupremeComponents.RUSTLESS_MACHINE.asOne(),
+      SupremeCore.CORE_OF_BLOCK.asOne(), SupremeComponents.RUSTLESS_MACHINE.asOne()};
 
   public static final SlimefunItemStack TECH_ROBOTIC_II = new SupremeItemStack("SUPREME_TECH_ROBOTIC_II",
       Material.POLISHED_BLACKSTONE, "&bTech Robotic II", "", "&fUse beginner level robots ",
       "&fto progress to higher levels", "&fneed 32x to upgrade", "", LoreBuilder.radioactive(Radioactivity.VERY_HIGH), "",
       LoreBuilder.machine(MachineTier.END_GAME, MachineType.MACHINE), UtilEnergy.energyPowerPerSecond(500), "",
       "&3Supreme Machine");
-  public static final ItemStack[] RECIPE_TECH_ROBOTIC_II = new ItemStack[]{SupremeComponents.CONVEYANCE_MACHINE,
-      SupremeCetrus.CETRUS_LUMIUM, SupremeComponents.CONVEYANCE_MACHINE, SupremeComponents.INDUCTOR_MACHINE,
-      TechRobotic.TECH_ROBOTIC, SupremeComponents.INDUCTOR_MACHINE, SupremeComponents.THORNERITE,
-      SupremeCetrus.CETRUS_IGNIS, SupremeComponents.THORNERITE};
+  public static final ItemStack[] RECIPE_TECH_ROBOTIC_II = new ItemStack[]{SupremeComponents.CONVEYANCE_MACHINE.asOne(),
+      SupremeCetrus.CETRUS_LUMIUM.asOne(), SupremeComponents.CONVEYANCE_MACHINE.asOne(), SupremeComponents.INDUCTOR_MACHINE.asOne(),
+      TechRobotic.TECH_ROBOTIC.asOne(), SupremeComponents.INDUCTOR_MACHINE.asOne(), SupremeComponents.THORNERITE.asOne(),
+      SupremeCetrus.CETRUS_IGNIS.asOne(), SupremeComponents.THORNERITE.asOne()};
 
   public static final SlimefunItemStack TECH_ROBOTIC_III = new SupremeItemStack("SUPREME_TECH_ROBOTIC_III",
       Material.POLISHED_BLACKSTONE, "&bTech Robotic III", "", "&fUse beginner level robots ",
       "&fto progress to higher levels", "&fneed 16x to upgrade", "", LoreBuilder.radioactive(Radioactivity.VERY_HIGH), "",
       LoreBuilder.machine(MachineTier.END_GAME, MachineType.MACHINE), UtilEnergy.energyPowerPerSecond(500), "",
       "&3Supreme Machine");
-  public static final ItemStack[] RECIPE_TECH_ROBOTIC_III = new ItemStack[]{SupremeComponents.THORNERITE,
-      SupremeAttribute.getImpetus(), SupremeComponents.THORNERITE, SupremeComponents.SUPREME,
-      TechRobotic.TECH_ROBOTIC_II, SupremeComponents.SUPREME, SupremeComponents.CRYSTALLIZER_MACHINE,
-      SupremeCetrus.CETRUS_LUMIUM, SupremeComponents.CRYSTALLIZER_MACHINE};
+  public static final ItemStack[] RECIPE_TECH_ROBOTIC_III = new ItemStack[]{SupremeComponents.THORNERITE.asOne(),
+      SupremeAttribute.getImpetus().asOne(), SupremeComponents.THORNERITE.asOne(), SupremeComponents.SUPREME.asOne(),
+      TechRobotic.TECH_ROBOTIC_II.asOne(), SupremeComponents.SUPREME.asOne(), SupremeComponents.CRYSTALLIZER_MACHINE.asOne(),
+      SupremeCetrus.CETRUS_LUMIUM.asOne(), SupremeComponents.CRYSTALLIZER_MACHINE.asOne()};
 
   public static final List<AbstractItemRecipe> recipes = new ArrayList<>();
   private Map<Block, ItemStack> processing = new HashMap<>();
@@ -92,13 +92,13 @@ public class TechRobotic extends SimpleItemContainerMachine implements Radioacti
 
   private static void invalidProgressBar(BlockMenu menu, String txt) {
     for (int i : InventoryRecipe.TECH_ROBOTIC_PROGRESS_BAR_SLOT) {
-      menu.replaceExistingItem(i, new CustomItemStack(Material.RED_STAINED_GLASS_PANE, txt));
+      menu.replaceExistingItem(i, CustomItemStack.create(Material.RED_STAINED_GLASS_PANE, txt));
     }
   }
 
   private static void invalidProgressBar(BlockMenu menu, Material material, String txt) {
     for (int i : InventoryRecipe.TECH_ROBOTIC_PROGRESS_BAR_SLOT) {
-      menu.replaceExistingItem(i, new CustomItemStack(material, txt));
+      menu.replaceExistingItem(i, CustomItemStack.create(material, txt));
     }
   }
 
@@ -116,22 +116,22 @@ public class TechRobotic extends SimpleItemContainerMachine implements Radioacti
   protected void constructMenu(BlockMenuPreset preset) {
 
     for (int i : InventoryRecipe.TECH_ROBOTIC_BORDER) {
-      preset.addItem(i, new CustomItemStack(Material.GRAY_STAINED_GLASS_PANE, " ", new String[0]),
+      preset.addItem(i, CustomItemStack.create(Material.GRAY_STAINED_GLASS_PANE, " ", new String[0]),
           ChestMenuUtils.getEmptyClickHandler());
     }
 
     for (int i : InventoryRecipe.TECH_ROBOTIC_BORDER_IN) {
-      preset.addItem(i, new CustomItemStack(Material.BLUE_STAINED_GLASS_PANE, " ", new String[0]),
+      preset.addItem(i, CustomItemStack.create(Material.BLUE_STAINED_GLASS_PANE, " ", new String[0]),
           ChestMenuUtils.getEmptyClickHandler());
     }
 
     for (int i : InventoryRecipe.TECH_ROBOTIC_BORDER_OUT) {
-      preset.addItem(i, new CustomItemStack(Material.ORANGE_STAINED_GLASS_PANE, " ", new String[0]),
+      preset.addItem(i, CustomItemStack.create(Material.ORANGE_STAINED_GLASS_PANE, " ", new String[0]),
           ChestMenuUtils.getEmptyClickHandler());
     }
 
     for (int i : InventoryRecipe.TECH_ROBOTIC_PROGRESS_BAR_SLOT) {
-      preset.addItem(i, new CustomItemStack(Material.BLACK_STAINED_GLASS_PANE, " ", new String[0]),
+      preset.addItem(i, CustomItemStack.create(Material.BLACK_STAINED_GLASS_PANE, " ", new String[0]),
           ChestMenuUtils.getEmptyClickHandler());
     }
 
